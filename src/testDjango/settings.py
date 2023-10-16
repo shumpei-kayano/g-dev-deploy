@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'app',
     'django_extensions',
     'debug_toolbar',
+    'sass_processor',
 ]
 
 MIDDLEWARE = [
@@ -132,8 +133,6 @@ def show_debug_toolbar(request):
     return request.META.get('REMOTE_ADDR') in settings.INTERNAL_IPS
 
 DEBUG_TOOLBAR_CALLBACK = show_debug_toolbar
-
-STATIC_URL = '/static/'
 
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": lambda request: True,
