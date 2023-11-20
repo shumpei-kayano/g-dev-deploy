@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'sass_processor',
+    'django_seed',
 ]
 
 MIDDLEWARE = [
