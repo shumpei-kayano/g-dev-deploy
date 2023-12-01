@@ -236,13 +236,13 @@ __pycache__/
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": "/src/accounts/static/accounts/css",
+            "savePath": "/src/TeamA/diary/static/diary/css",
             "savePathReplacementPairs": null
         }
     ],
     // このブロックを追記
     "liveSassCompile.settings.includeItems": [
-        "/src/accounts/static/accounts/css/style.scss"
+        "/src/TeamA/diary/static/diary/css/style.scss"
     ],
 ```
 
