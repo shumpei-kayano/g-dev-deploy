@@ -224,14 +224,35 @@ __pycache__/
 1. プロジェクト直下にstatic/アプリ名/cssディレクトリを作成する
 2. VSCodeの拡張でLive Sass Compilerをインストール
 3. LiveSassCompilerの設定画面からFormatsをsettings.jsonで開く
-4. savePathのディレクトリでcssファイルの出力先を指定する。（ルートは現在開いているディレクトリが基点）
+4. savePathの箇所でcssファイルの出力先を指定する。（ルートは現在開いているディレクトリが基点）
 ```json
-"savePath": "/src/【プロジェクト名】/static/【アプリ名】/css",
+"savePath": "/src/【プロジェクト名】/【アプリ名】/static/【アプリ名】/css",
 例）
-"savePath": "/src/TeamA/static/dialy/css",
+"savePath": "/src/TeamA/diary/static/diary/css",
 ```
-5. cssディレクトリやscssディレクトリにstyle.scssを作成し、cssを記述する
-6. 画面右下のwatchsassボタンをクリックするとリアルタイムでコンパイルして指定フォルダへ出力される。
+5. includItemsを追記し、読み込み元を指定する（これがないと別アプリもコンパイルしてしまう）
+```json
+    //結果こんな感じになります。
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/src/accounts/static/accounts/css",
+            "savePathReplacementPairs": null
+        }
+    ],
+    // このブロックを追記
+    "liveSassCompile.settings.includeItems": [
+        "/src/accounts/static/accounts/css/style.scss"
+    ],
+```
+
+6. cssディレクトリやscssディレクトリにstyle.scssを作成し、cssを記述する
+7. 画面右下のwatchsassボタンをクリックするとリアルタイムでコンパイルして指定フォルダへ出力される。
+※generateMapが出力される場合、上記の5のブロックの下に
+```json
+"liveSassCompile.settings.generateMap": false,
+```
+があります。falseを一度trueに変更して保存し、再度falseにすると生成しなくなります。
 
 ## サーバーサイドの編集について
 ※サーバーを再起動しないと反映されません。
