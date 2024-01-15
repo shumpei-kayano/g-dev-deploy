@@ -44,7 +44,6 @@
         'django.contrib.sites', # 追加
         'allauth', # 追加
         'allauth.account', # 追加
-        'django_seed', # 追加
     ]
     ```
     
