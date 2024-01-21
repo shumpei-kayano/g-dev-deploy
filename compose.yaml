@@ -28,6 +28,8 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - static_volume:/usr/share/nginx/html/static  # 追加
+      - /etc/letsencrypt/live/2023teama.o-hara-oita.click/fullchain.pem:/etc/nginx/ssl/fullchain.pem
+      - /etc/letsencrypt/live/2023teama.o-hara-oita.click/privkey.pem:/etc/nginx/ssl/privkey.pem
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.2.0
     container_name: phpmyadmin
