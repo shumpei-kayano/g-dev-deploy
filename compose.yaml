@@ -25,9 +25,12 @@ services:
     container_name: nginx_server
     ports:
       - "80:80"
+      - "443:443"  # SSL対応のために443ポートを追加
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - static_volume:/usr/share/nginx/html/static  # 追加
+      - static_volume:/usr/share/nginx/html/static
+      - /etc/letsencrypt/live/test.o-hara-oita.click/fullchain.pem:/etc/nginx/ssl/fullchain.pem #追記
+      - /etc/letsencrypt/live/test.o-hara-oita.click/privkey.pem:/etc/nginx/ssl/privkey.pem #追記
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.2.0
     container_name: phpmyadmin
@@ -42,4 +45,4 @@ services:
 
 volumes:
   db_data:
-  static_volume:  # 追加
+  static_volume:
