@@ -10,3 +10,4 @@ django-sass-processor
 awscli
 django-seed
 faker
+django-axes

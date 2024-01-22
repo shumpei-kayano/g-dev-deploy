@@ -1,8 +1,8 @@
-
 from pathlib import Path
 import os
 # debug_toolbarの設定
 import mimetypes
+import datetime
 mimetypes.add_type("application/javascript", ".js", True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'sass_processor',
+    'axes'
 ]
 
 MIDDLEWARE = [
@@ -45,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 # INTERNAL_IPS = ['127.0.0.1', '::1', '10.0.0.1']
@@ -138,3 +140,8 @@ DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": lambda request: True,
     'STATIC_URL': '/debug_toolbar/',
 }
+
+# ログイン時の試行回数
+AXES_FAILURE_LIMIT = 5  # 例: 5回の失敗後にロックアウト
+# ロックアウト時間
+AXES_COOLOFF_TIME = datetime.timedelta(minutes=1) # hours=24とかもできる
